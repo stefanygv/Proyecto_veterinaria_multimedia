@@ -2,9 +2,11 @@
 <html>
 <head>
 
-<link rel="stylesheet" type="text/css" href="fonts.css">
-<link rel="icon" type="text/css" href="mascotas.ico">
-<link rel="stylesheet"  href="menu.css">
+<link rel="stylesheet" type="text/css" href="css/fonts.css">
+<link rel="icon" type="text/css" href="css/mascotas.ico">
+<link rel="stylesheet"  href="css/menu.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/stil.css">
 <style type="text/css">
 BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) no-repeat center center fixed;} 
 
@@ -36,38 +38,25 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 	
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="stil.css">
 
-<table class="centrada"  width="100%" border=0> 
+
+<table class="centrada"  width="60%" border=0> 
 <th>Nombre Dueño</th>
 <th>Rut</th>
 <th>dv</th>
-<th>Fecha Nacimiento Mascota</th>
-<th>Nombre Mascota</th>
-<th>Tipo de Sangre</th>
-<th>Vacuna</th>
-<th>Enfermedad</th>
-<th>Tipo Raza</th>
-<th>Sexo Mascota</th>
 <th>Telefono</th>
 <th>PDF</th>
 </tr>
 		<?php 
 	include ('conexion.php');
-	$consulta = "SELECT * FROM mascotas";
+	$consulta = "SELECT * FROM dueno";
 	$res = $mysqli->query($consulta);
 
 	while($row = $res->fetch_assoc()){
 		$rut = $row['rut'];
 		$dv = $row['dv'];
 		$Nombre = $row['nombre_dueno'];
-		$Fecha = $row['fecha_de_nacimiento'];
-		$nombre_mascota = $row['nombre_mascota'];
- 		$tipo_sangre = $row['tipo_sangre'];
- 		$vacuna = $row['vacuna'];
- 		$enfermedad = $row['enfermedad'];
- 		$tipo_raza = $row['tipo_raza'];
- 		$sexo = $row['sexo'];
+		
  		$telefono = $row['telefono'];
 		
 		echo "<tr>";
@@ -81,31 +70,10 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 		echo $dv;
 		echo "</td>";
 		echo "<td>";
-		echo $Fecha;
-		echo "</td>";
-		echo "<td>";
-		echo $nombre_mascota;
-		echo "</td>";
-		echo "<td>";
-		echo $tipo_sangre;
-		echo "</td>";
-		echo "<td>";
-		echo $vacuna;
-		echo "</td>";
-		echo "<td>";
-		echo $enfermedad;
-		echo "</td>";
-		echo "<td>";
-		echo $tipo_raza;
-		echo "</td>";
-		echo "<td>";
-		echo $sexo;
-		echo "</td>";
-		echo "<td>";
 		echo $telefono;
 		echo "</td>";
 		echo "<td>";
-		echo '<button><class="btn btn-danger"><a href="imprimirpdf.php?rut='.$rut.'">Generar PDF</a> </button>';
+		echo '<button class="btn btn-danger"><a href="imprimirpdf.php?rut='.$rut.'">Generar PDF</a> </button>';
 		echo "</td>";
 		echo "</tr>";
 	}

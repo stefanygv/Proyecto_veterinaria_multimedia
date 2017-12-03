@@ -7,17 +7,15 @@
 
 
 <!DOCTYPE html>
-
-
 <html lang="es">
 <head>
     <title>Bienvenido</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width-device-width, user-scalable=no, initial-scale=1 ,maxium-scale =1 , minium-scale =1">
-    <link rel="stylesheet" href ="estilos.css">
+    <link rel="stylesheet" href ="css/estilos.css">
   </head>
 <body>
-    <form action ="proceso.php" method="post">
+    <form action ="procesar.php" method="post">
     <h2> Bienvenido </h2>
 
     <input type="text" placeholder= "&#128272; usuario" name="usuario">

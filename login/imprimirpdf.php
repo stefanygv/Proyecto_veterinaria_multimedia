@@ -2,7 +2,7 @@
 include ('conexion.php');
 if(isset($_GET['rut'])) {
 $rut = $_GET['rut'];
-$consulta = "SELECT nombre_dueno, rut, dv, fecha_de_nacimiento, nombre_mascota, tipo_sangre, vacuna, enfermedad, tipo_raza, sexo, telefono, imagen FROM mascotas WHERE rut = '$rut'";
+$consulta = "SELECT nombre_dueno, rut, dv, fecha_nacimiento, nombre_mascota, tipo_sangre, vacuna, enfermedad, tipo_raza, sexo, telefono, imagen FROM dueno WHERE rut = '$rut'";
 $res = $mysqli->query($consulta);
 while($row = $res->fetch_assoc()){
 
