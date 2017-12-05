@@ -6,7 +6,6 @@
 <link rel="stylesheet" type="text/css" href="css/menu.css">
 <link rel="icon" type="text/css" href="css/mascotas.ico">
 
-
 <style type="text/css">
 BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) no-repeat center center fixed;} 
 
@@ -17,7 +16,7 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 
 <body>
 	
-	<title>Formulario</title>
+	<title>Agregar Mascotas</title>
 <ul>
  <li><a href="Bienvenidos.html">Bienvenidos</a></li>
   <li><a href="formulario.php">Ingresar Usuario</a></li>
@@ -110,19 +109,11 @@ Vacunas: <br> </td>
           </tr>
 
 <br>
-    <div class="form-group" id="opciones" >
-Estatus: </br>
-                    <input type="radio" name="estatus" value="activo" onchange="mostrar(this.value);">Activo
-                    <input type="radio" name="estatus" value="inactivo"  onchange="mostrar(this.value);">Inactivo
-                </div>
-                <div class="form-group" id="vacio" style="display:none;">
-                    <label for="">vacio:</label>
-                    <input type="text" class="form-control" name="vacio"  >
-                </div>
-                <div class="form-group" id="motivo" style="display:none;">
-                    Motivos: <input type="text" class="form-control" name="motivo"  >
-                
-            </div>
+<br>
+   Estatus: </br>
+<input type="radio" name="estatus" value="activo" checked="checked" /> Activo
+<input type="radio" name="estatus" value="inactivo" /> Inactivo <br>
+
 
         <input type="hidden" name="rut" value="<?php echo $_GET['rut']; ?>">
         	</form>
@@ -135,85 +126,69 @@ Estatus: </br>
   </div>
 </div>
 
-  <script>
-  	$(function(){
-  		MostrarMascotas();
+    <script>
+    $(function(){
+      MostrarMascotas();
 
-  		$('#agregar_mascota').click(function(form){
-			form.preventDefault();
-			dataForm = $('#formulario_mascota').serialize();
-			console.log(dataForm);
-			$.ajax({
-				type: 'ajax',
-				method: 'post',
-				url: 'proceso.php',
-				data: dataForm,
-				dataType: 'json',
-				success: function(data){
-					console.log(data);
-					if (data.msj) {
-						alert('mascota insertada');
-						MostrarMascotas();
-					}else{
-						alert('complete todos los datos');
-					}
-				},
-				error: function(){
-					console.log("Error al enviar los datos");
-				}
-			});
-		});
-
-  		function MostrarMascotas(){
-  			var dataForm = {
-  				"mostrar_mascotas" : "mostrar_mascotas",
-  				"rut" : <?php echo $_GET['rut']; ?>
-  			};
-
-  			var html = '';
-  			var i;
-
-  			$.ajax({
-				type: 'ajax',
-				method: 'post',
-				url: 'proceso.php',
-				data: dataForm,
-				dataType: 'json',
-				success: function(data){
-					console.log(data);
-					for (var i = 0; i < data.mascotas.length; i++) {
-						html += '<tr>'+
-								'<td>'+data.mascotas[i][2]+'</td>'+
-								'<td>'+data.mascotas[i][3]+'</td>'+
-								'<td>'+data.mascotas[i][4]+'</td>'+
-								'<td>'+data.mascotas[i][5]+'</td>'+
-								'<td>'+data.mascotas[i][6]+'</td>'+
-								'<td>'+data.mascotas[i][7]+'</td>'+
-								'<td>'+data.mascotas[i][8]+'</td>'+
-							'</tr>';
-					}
-					
-					$('#listamascotas').html(html);
-				},
-				error: function(){
-					console.log("Error al enviar los datos");
-				}
-			});
-  		}
-  	});
-  </script>
-
-      <script>
-    function mostrar(dato){
-        if(dato=="1"){
-            document.getElementById("vacio").style.display = "none";
-            document.getElementById("motivo").style.display = "none";
-           
+      $('#agregar_mascota').click(function(form){
+      form.preventDefault();
+      dataForm = $('#formulario_mascota').serialize();
+      console.log(dataForm);
+      $.ajax({
+        type: 'ajax',
+        method: 'post',
+        url: 'proceso.php',
+        data: dataForm,
+        dataType: 'json',
+        success: function(data){
+          console.log(data);
+          if (data.msj) {
+            alert('mascota insertada');
+            MostrarMascotas();
+          }else{
+            alert('complete todos los datos');
+          }
+        },
+        error: function(){
+          console.log("Error al enviar los datos");
         }
-        if(dato=="2"){
-            document.getElementById("vacio").style.display = "none";
-            document.getElementById("motivo").style.display = "block"; 
-        }        
-    }
-    </script>
+      });
+    });
 
+      function MostrarMascotas(){
+        var dataForm = {
+          "mostrar_mascotas" : "mostrar_mascotas",
+          "rut" : <?php echo $_GET['rut']; ?>
+        };
+
+        var html = '';
+        var i;
+
+        $.ajax({
+        type: 'ajax',
+        method: 'post',
+        url: 'proceso.php',
+        data: dataForm,
+        dataType: 'json',
+        success: function(data){
+          console.log(data);
+          for (var i = 0; i < data.mascotas.length; i++) {
+            html += '<tr>'+
+                '<td>'+data.mascotas[i][2]+'</td>'+
+                '<td>'+data.mascotas[i][3]+'</td>'+
+                '<td>'+data.mascotas[i][4]+'</td>'+
+                '<td>'+data.mascotas[i][5]+'</td>'+
+                '<td>'+data.mascotas[i][6]+'</td>'+
+                '<td>'+data.mascotas[i][7]+'</td>'+
+              '</tr>';
+          }
+          
+          $('#listamascotas').html(html);
+        },
+        error: function(){
+          console.log("Error al enviar los datos");
+        }
+      });
+      }
+    });
+  </script>

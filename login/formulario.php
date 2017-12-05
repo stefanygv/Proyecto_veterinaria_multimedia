@@ -55,39 +55,46 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 
 
 <form method="post" name="formulario_mascota" id="formulario_mascota">
-Nombre Dueño: <input type="text" name="nombre_dueno" value="" class="form-control" placeholder="Ingresa Nombre"></br> 
-Rut: <input type="text" name="rut" value="" class="form-control" placeholder="Ingresa Rut"><br> 
-dv: <input type="text" name="dv" value="" class="form-control" placeholder="Ingresa Codigo Verificador"><br> 
-Telefono: <input type="text" name="telefono" value="" class="form-control" placeholder="Ingrese Telefono"><br>
+Nombre Dueño: <input type="text" name="nombre_dueno" id="nombre_dueno" value="" class="form-control" placeholder="Ingresa Nombre"></br> 
+Rut: <input type="text" name="rut" id="rut" value="" class="form-control" placeholder="Ingresa Rut"><br> 
+dv: <input type="text" name="dv" id="dv" value="" class="form-control" placeholder="Ingresa Codigo Verificador"><br> 
+Telefono: <input type="text" name="telefono" id="telefono" value="" class="form-control" placeholder="Ingrese Telefono"><br>
+<input type="file" name="imagen" id="imagen"/>
+<br>
 <input type="submit" name="enviar" id="enviar" class="btn btn-danger" />
 
 </form>
 
+
 <script>
-	$(function(){
-		$('#enviar').click(function(form){
-			form.preventDefault();
-			dataForm = $('#formulario_mascota').serialize();
-			console.log(dataForm);
-			$.ajax({
-				type: 'ajax',
-				method: 'post',
-				url: 'proceso.php',
-				data: dataForm,
-				dataType: 'json',
-				success: function(data){
-					console.log(data);
-					if (data.msj) {
-						alert('usuario insertado');
-						window.location.href = "agregarmascota.php?rut="+data.rut;
-					}else{
-						alert('complete todos los datos');
-					}
-				},
-				error: function(){
-					console.log("Error al enviar los datos");
-				}
-			});
-		});
-	});
+	$(document).ready(function(){
+	$("#enviar").click(function(){
+	var nombre_dueno = $("#nombre_dueno").val();
+	var rut = $("#rut").val();
+	var dv = $("#dv").val();
+	var telefono = $("#telefono").val();
+	var imagen = $("#imagen").prop("files")[0];
+	var formData = new FormData();
+	formData.append('nombre_dueno' , nombre_dueno);
+	formData.append('rut' , rut);
+	formData.append('dv' , dv);
+	formData.append('telefono' , telefono);
+	formData.append('imagen' , imagen);
+	 for (var pair of formData.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]); 
+            }
+	$.ajax({
+	type: "POST",
+	url: "proceso.php",
+	data: formData,
+	processData : false,
+    contentType : false,
+	success: function(result){
+	document.location.href='agregarmascota.php?rut='+rut;
+}
+});
+
+return false;
+});
+});
 </script>

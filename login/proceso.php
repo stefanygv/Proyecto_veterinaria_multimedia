@@ -1,14 +1,29 @@
-<?php
+ <?php
 include('modelomascota.php');
-
+include ('libreria/phpqrcode/qrlib.php');
 $data['msj'] = false;
 $mascota = new Mascota;
-
 if (isset($_POST['nombre_dueno']) and strlen($_POST['nombre_dueno']) > 2 and isset($_POST['rut']) and strlen($_POST['rut']) > 7 and isset($_POST['dv']) and strlen($_POST['dv']) > 0 and isset($_POST['telefono']) and strlen($_POST['telefono']) > 7) {
-	//Aqui se inserta el usuario
-	$data['datos'] = $mascota->insertUser($_POST['nombre_dueno'], $_POST['rut'], $_POST['dv'], $_POST['telefono']);
+	$file_name = $_FILES['imagen']['name'];
+    $file_tmp =$_FILES['imagen']['tmp_name'];
+    $file_type=$_FILES['imagen']['type'];
+    echo $file_name;
+	$data['datos'] = $mascota->insertUser($_POST['nombre_dueno'], $_POST['rut'], $_POST['dv'], $_POST['telefono'],$file_name);
 	$data['rut'] = $data['datos'][0]['rut'];
 	$data['msj'] = true;
+	$dirname = "archivo/".$_POST['rut'];
+	if (!is_dir($dirname)) {
+    	mkdir($dirname);
+	}
+	move_uploaded_file($file_tmp, $dirname."/".$_POST['rut'].".png");
+	$ImagenGuar = "localhost/login/archivo/".$_POST['rut']."/".$_POST['rut'].".png";
+
+    $codeContents  = 'BEGIN:VCARD'."\n"; 
+    $codeContents .= 'FN:'.$_POST['nombre_dueno']."\n";  
+    $codeContents .= 'TEL;WORK;VOICE:'.$_POST['telefono']."\n";  
+    $codeContents .= 'END:VCARD'; 
+  
+    QRcode::png($codeContents,"archivo/".$_POST['rut']."/".$_POST['rut'].'QR'.".png");
 }
 
 if (isset($_POST['mostrar_mascotas'])) {

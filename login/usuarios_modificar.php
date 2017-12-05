@@ -36,6 +36,7 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 <th>Rut</th>
 <th>Editar Usuario</th>
 <th>Editar Mascota</th>
+<th>Agregar Mascota</th>
 </tr>
 	<?php 
 	include ('conexion.php');
@@ -56,6 +57,9 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 		echo "</td>";
 		echo "<td>";
 		echo '<button class="btn btn-danger"><a href="modificarmascotas.php?rut='.$rut.'">Editar Mascotas </a></button>'; 
+		echo "</td>";
+		echo "<td>";
+		echo '<button class="btn btn-danger"><a href="agregarmascota.php?rut='.$rut.'">Agregar Mascotas </a></button>'; 
 		echo "</td>";
 		echo "</tr>";
 

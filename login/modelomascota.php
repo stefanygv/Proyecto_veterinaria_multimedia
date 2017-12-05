@@ -6,19 +6,20 @@
 		$usuario = "root";
 		$clave="";
 		$db_nombre="veterinaria";
-		$host="localhost"; 
+		$host="localhost";
 
 		 return $conn = new PDO("mysql:host=$host;dbname=$db_nombre",$usuario, $clave);
 	}
 
-	function insertUser($nombre, $rut, $dv, $telefono){
+	function insertUser($nombre_dueno, $rut, $dv, $telefono,$imagen){
 		$conn = $this->conectar();
-		$sql = "INSERT INTO dueno (nombre_dueno, rut, dv, telefono) VALUES (?,?,?,?)";
+		$sql = "INSERT INTO dueno (nombre_dueno, rut, dv, telefono,imagen) VALUES (?,?,?,?,?)";
 		$st = $conn->prepare($sql);
-		$st->bindParam(1, $nombre);
+		$st->bindParam(1, $nombre_dueno);
 		$st->bindParam(2, $rut);
 		$st->bindParam(3, $dv);
 		$st->bindParam(4, $telefono);
+		$st->bindParam(5, $imagen);
 		$st->execute();
 		return $this->getUser($rut);
 	}

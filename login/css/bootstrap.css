@@ -1332,7 +1332,7 @@ mark,
   color: #777;
 }
 .text-primary {
-  color: #337ab7;
+  color: #ffffff;
 }
 a.text-primary:hover,
 a.text-primary:focus {
@@ -3999,7 +3999,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a:hover,
 .nav .open > a:focus {
   background-color: #eee;
-  border-color: #337ab7;
+  border-color: #ffffff;
 }
 .nav .nav-divider {
   height: 1px;
@@ -4092,7 +4092,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #fff;
-  background-color: #337ab7;
+  background-color: #ffffff;
 }
 .nav-stacked > li {
   float: none;
@@ -4719,7 +4719,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 6px 12px;
   margin-left: -1px;
   line-height: 1.42857143;
-  color: #337ab7;
+  color: #ffffff;
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -4753,8 +4753,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   z-index: 3;
   color: #fff;
   cursor: default;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color: #ffffff;
+  border-color: #ffffff;
 }
 .pagination > .disabled > span,
 .pagination > .disabled > span:hover,
@@ -4870,11 +4870,11 @@ a.label:focus {
   background-color: #5e5e5e;
 }
 .label-primary {
-  background-color: #337ab7;
+  background-color: #ffffff;
 }
 .label-primary[href]:hover,
 .label-primary[href]:focus {
-  background-color: #286090;
+  background-color: #ffffff;
 }
 .label-success {
   background-color: #5cb85c;

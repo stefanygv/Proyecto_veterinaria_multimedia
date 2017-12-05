@@ -2,23 +2,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-
 <link rel="stylesheet" type="text/css" href="css/fonts.css">
 <link rel="stylesheet" type="text/css" href="css/stil.css">
 <link rel="icon" type="text/css" href="css/mascotas.ico">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet"  href="css/menu.css">
 <style type="text/css">
 BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) no-repeat center center fixed;} 
 
 </style></head>
- 
-<body>
-</body>
+
 </html>
-
+  
+  <title>Modificar Mascotas</title>
 <body>
-
 <ul>
  <li><a href="Bienvenidos.html">Bienvenidos</a></li>
   <li><a href="formulario.php">Ingresar Usuario</a></li>
@@ -38,15 +35,10 @@ if(isset($_GET['rut'])) {
     $consulta = "SELECT * FROM mascota WHERE rut = '$rut'";
     $res = $mysqli->query($consulta);
     while($row = $res->fetch_assoc()){
-      echo '  <form action="" method="post" id="formulario_mascota">
+      echo '<form action="" method="post" id="formulario_mascota">
       <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-
-
 </head>
 
 <body>
@@ -55,15 +47,15 @@ if(isset($_GET['rut'])) {
   <div class="row"> 
     <div class="col-md-4 well">
 
-Fecha De Nacimiento Mascota: <input type="date" name="fecha_nacimiento"  class="form-control"  readonly><br>
+Fecha De Nacimiento Mascota: <input type="date" name="fecha_nacimiento"  class="form-control"  value="'.$row['fecha_nacimiento'].'" readonly><br>
 Nombre Mascota: <input type="text" name="nombre_mascota" class="form-control"  value="'.$row['nombre_mascota'].'"><br>
 Tipo De Sangre: <input type="text" name="tipo_sangre" class="form-control" value="'.$row['tipo_sangre'].'"><br>
 <tr><td>
 Vacunas: <br> </td>
              <td>
-                <input type="checkbox" name="vacuna1"  value="rabia" /> Rabia
-                <input type="checkbox" name="vacuna2"  value="desparazitar"/> Desparazitar 
-                <input type="checkbox" name="vacuna3"  value="otras" /> Otras<br>  
+                <input type="checkbox" name="vacuna1"   value="'.$row['vacuna'].'"/> Rabia
+                <input type="checkbox" name="vacuna2"   /> Desparazitar 
+                <input type="checkbox" name="vacuna3"  /> Otras<br>  
              </td>
           </tr>
 <br>
@@ -74,19 +66,11 @@ Sexo: </br>
 <input type="radio" name="sexo" value="hembra" value="'.$row['sexo'].'"/> Hembra <br>
 <br>
 
- <div class="form-group" id="opciones" >
-Estatus: </br>
-                    <input type="radio" name="estatus" value="activo" onchange="mostrar(this.value);">Activo
-                    <input type="radio" name="estatus" value="inactivo"  onchange="mostrar(this.value);">Inactivo
-                </div>
-                <div class="form-group" id="vacio" style="display:none;">
-                    <label for="">vacio:</label>
-                    <input type="text" class="form-control" name="vacio"  >
-                </div>
-                <div class="form-group" id="motivo" style="display:none;">
-                    Motivos: <input type="text" class="form-control" name="motivo"  >
-                
-            </div>
+  Estatus: </br>
+<input type="radio" name="estatus" value="activo" checked="checked" /> Activo
+<input type="radio" name="estatus" value="inactivo" value="'.$row['estatus'].'"/> Inactivo <br>
+<br>
+
 
 <input type="submit" name = "submit" value="Modificar" class="btn btn-danger">
 
@@ -109,7 +93,7 @@ if(isset($_POST['submit'])){
     $enfermedad = $_POST['enfermedad'];
     $tipo_raza = $_POST['tipo_raza'];
     $sexo = $_POST['sexo'];
-     $estatus = $_POST['estatus'];
+    $estatus = $_POST['estatus'];
 
 
 
