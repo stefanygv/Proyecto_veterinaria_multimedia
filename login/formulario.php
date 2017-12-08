@@ -61,9 +61,65 @@ dv: <input type="text" name="dv" id="dv" value="" class="form-control" placehold
 Telefono: <input type="text" name="telefono" id="telefono" value="" class="form-control" placeholder="Ingrese Telefono"><br>
 <input type="file" name="imagen" id="imagen"/>
 <br>
-<input type="submit" name="Registrar" id="enviar" class="btn btn-danger" />
 
-</form>
+
+			<input type="button" value="Acceder a camara" class="btn btn-danger" onClick="setup(); $(this).hide().next().show();">
+		<input type="button" value="Tomar Foto" class="btn btn-danger" onClick="take_snapshot()" style="display:none">
+		<input type=button value="Reiniciar" class="btn btn-danger" onClick="Webcam.reset()">
+		<br>
+		<input type="submit" name="enviar" id="enviar" value="Registrar" class="btn btn-danger" />
+	</form>
+	
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<style type="text/css">
+		body { font-family: Helvetica, sans-serif; }
+		h2, h3 { margin-top:0; }
+		form { margin-top: 15px; }
+		form > input { margin-right: 15px; }
+	 }
+	</style>
+</head>
+<body>
+	<div id="results"></div>
+	
+
+	<div id="my_camera"></div>
+	
+	<!-- First, include the Webcam.js JavaScript Library -->
+	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../webcam.min.js"></script>
+	
+	<!-- Configure a few settings and attach camera -->
+	<script language="JavaScript">
+		Webcam.set({
+			width: 320,
+			height: 240,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+	</script>
+	<script language="JavaScript">
+		function setup() {
+			Webcam.reset();
+			Webcam.attach( '#my_camera' );
+		}
+		
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+				// display results in page
+				document.getElementById('results').innerHTML = 
+					'<h2>Tu foto</h2>' + 
+					'<img src="'+data_uri+'"/>';
+			} );
+		}
+	</script>
+	
+</body>
+</html>
 
 
 <script>
