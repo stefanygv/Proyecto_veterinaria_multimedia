@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/stil.css">
 <style type="text/css">
-BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) no-repeat center center fixed;} 
+BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) repeat center center fixed;} 
 </style></head>
 </html>
 
@@ -25,8 +25,6 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 
 
 <body>
- 		<form name="formulario" method="post" action="formulario.php" enctype="multipart/form-data" >
-
 	<title>Modificar Usuarios</title>
 
 <table class="centrada"  width="50%" border=0> 
@@ -40,7 +38,7 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 </tr>
 	<?php 
 	include ('conexion.php');
-	$consulta = "SELECT nombre_dueno, rut FROM dueno";
+	$consulta = "SELECT nombre_dueno, rut FROM dueno WHERE estado=1";
 
 	$res = $mysqli->query($consulta);
 	while($row = $res->fetch_assoc()){
@@ -65,7 +63,6 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 
 	}
 	?>
-
 </table>
 </body>
 </html>

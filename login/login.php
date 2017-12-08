@@ -31,7 +31,7 @@
 
 <style type="text/css">
 
-BODY { background: url(https://professor-falken.com/wp-content/uploads/2017/09/mascotas-perro-gato-juego-amistad-amor-Fondos-de-Pantalla-HD-professor-falken.com_.jpg) center fixed no-repeat} 
+BODY { background: url(https://professor-falken.com/wp-content/uploads/2017/09/mascotas-perro-gato-juego-amistad-amor-Fondos-de-Pantalla-HD-professor-falken.com_.jpg) center fixed repeat} 
 
 </style></head>
  

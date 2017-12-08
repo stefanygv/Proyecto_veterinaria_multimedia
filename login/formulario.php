@@ -6,7 +6,7 @@
 <link rel="icon" type="text/css" href="css/mascotas.ico">
 <link rel="stylesheet"  href="css/menu.css">
 <style type="text/css">
-BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) no-repeat center center fixed;} 
+BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) repeat center center fixed;} 
 
 </style></head>
 </html>
@@ -61,7 +61,7 @@ dv: <input type="text" name="dv" id="dv" value="" class="form-control" placehold
 Telefono: <input type="text" name="telefono" id="telefono" value="" class="form-control" placeholder="Ingrese Telefono"><br>
 <input type="file" name="imagen" id="imagen"/>
 <br>
-<input type="submit" name="enviar" id="enviar" class="btn btn-danger" />
+<input type="submit" name="Registrar" id="enviar" class="btn btn-danger" />
 
 </form>
 

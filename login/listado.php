@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <link rel="stylesheet" type="text/css" href="css/fonts.css">
 <link rel="icon" type="text/css" href="css/mascotas.ico">
 <link rel="stylesheet"  href="css/menu.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/stil.css">
 <style type="text/css">
-BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) no-repeat center center fixed;} 
+BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) repeat center center fixed;} 
 
 </style></head>
 </html>
 
 <html>
-
 <body>
-	
+
 	<title>Lista</title>
 <ul>
  <li><a href="Bienvenidos.html">Bienvenidos</a></li>

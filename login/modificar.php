@@ -8,7 +8,7 @@
 <link rel="icon" type="text/css" href="css/mascotas.ico">
 <link rel="stylesheet"  href="css/menu.css">
 <style type="text/css">
-BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) no-repeat center center fixed;} 
+BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) repeat center center fixed;} 
 
 </style></head>
  
@@ -57,10 +57,12 @@ Dv: <input type="text" name="dv"  class="form-control"   value="'.$row['dv'].'">
 Telefono: <input type="text" name="telefono" class="form-control" value="'.$row['telefono'].'"><br>
 
 <input type="submit" name = "submit" value="Modificar" class="btn btn-danger">
+<input type="submit" name="eliminar" value="eliminar" class="pull-right btn btn-danger">
 
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
-</form>';
+</form>
+';
     }
 }
 
@@ -84,6 +86,18 @@ if($insert_row){
 }else{
     die('Error : ('. $mysqli->errno .') '. $mysqli->error);
 }
+}
+
+if (isset($_POST['eliminar'])) {
+	$rut = $_POST['rut'];
+	$disable_row = $mysqli->query("UPDATE dueno SET estado = 0 WHERE rut = '".$rut."'");
+
+    if($disable_row){
+      header('Location: usuarios_modificar.php');                    
+      print 'Datos modificados' .$mysqli->insert_id .'<br />'; 
+    }else{
+      die('Error : ('. $mysqli->errno .') '. $mysqli->error);
+    }
 }
 
   ?>

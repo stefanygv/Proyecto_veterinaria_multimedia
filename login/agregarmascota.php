@@ -7,7 +7,7 @@
 <link rel="icon" type="text/css" href="css/mascotas.ico">
 
 <style type="text/css">
-BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) no-repeat center center fixed;} 
+BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) repeat center center fixed;} 
 
 </style></head>
 </html>
@@ -61,7 +61,7 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
       <tr>
         <th>Nombre mascota</th>
         <th>Fecha Nacimiento</th>
-        <th>Vacunas</th>
+ 
         <th>Enfermedad</th>
         <th>Raza</th>
         <th>Sexo</th>     
@@ -176,10 +176,11 @@ Vacunas: <br> </td>
             html += '<tr>'+
                 '<td>'+data.mascotas[i][2]+'</td>'+
                 '<td>'+data.mascotas[i][3]+'</td>'+
-                '<td>'+data.mascotas[i][4]+'</td>'+
+               // '<td>'+data.mascotas[i][4]+'</td>'+
                 '<td>'+data.mascotas[i][5]+'</td>'+
                 '<td>'+data.mascotas[i][6]+'</td>'+
                 '<td>'+data.mascotas[i][7]+'</td>'+
+                '<td>'+data.mascotas[i][8]+'</td>'+
               '</tr>';
           }
           
