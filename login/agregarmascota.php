@@ -18,24 +18,82 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 	
 	<title>Agregar Mascotas</title>
 <ul>
- <li><a href="Bienvenidos.html">Bienvenidos</a></li>
-  <li><a href="formulario.php">Ingresar Usuario</a></li>
-  <li><a href="usuarios_modificar.php">Modificar Usuario</a></li> 
-  <li><a href="listado.php">Ver Listado</a></li>
-  <li><a href="logout.php">Logout</a></li>
+ <li><a style="text-decoration: none; color:#767676" href="Bienvenidos.html">Bienvenidos</a></li>
+  <li><a style="text-decoration: none; color:#767676" href="formulario.php">Ingresar Usuario</a></li>
+  <li><a style="text-decoration: none; color:#767676" href="usuarios_modificar.php">Modificar Usuario</a></li> 
+  <li><a style="text-decoration: none; color:#767676" href="listado.php">Ver Listado</a></li>
+  <li><a style="text-decoration: none; color:#767676" href="logout.php">Logout</a></li>
 </ul>
 </nav>
-  </header>
 </body>
 </html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 
 <body>
+
+<div class="modal" id="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Crop Imagen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php  
+        $directory_img = 'C:/xampp/htdocs/proyecto_veterinaria_multimedia/login/archivo/'.$_GET['rut'].'/'.$_GET['rut'].'camera.jpeg';
+        echo '<img src="archivo/'.$_GET['rut'].'/'.$_GET['rut'].'camera.jpeg"  width="240" height="240"id="target" alt="Flowers">';
+        ?>
+        <form action="agregarmascota.php?rut=<?php echo $_GET['rut'] ?>" method="post" onsubmit="return checkCoords();">
+      <input type="hidden" id="x" name="x" />
+      <input type="hidden" id="y" name="y" />
+      <input type="hidden" id="w" name="w" />
+      <input type="hidden" id="h" name="h" />
+      <input type="submit" value="Crop" class="btn btn-large btn-inverse" />
+    </form>
+    <?php  
+  /*if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+  echo "recibido";
+  $targ_w = $targ_h = 150;
+  $jpeg_quality = 90;
+
+  $src = 'archivo/'.$_GET['rut'].'/'.$_GET['rut'].'camera.jpeg';
+  $img_r = imagecreatefromjpeg($src);
+  $dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
+
+  imagecopyresampled($dst_r,$img_r,0,0,$_POST['x'],$_POST['y'],
+  $targ_w,$targ_h,$_POST['w'],$_POST['h']);
+
+  header('Content-type: image/jpeg');
+  imagejpeg($dst_r,null,$jpeg_quality);
+}*/
+?>
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-danger">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#modal").modal('show');
+    }  );
+
+
+</script>
+
+
 <div class="container">
 	<div class="row"> 	
 				<div class="col-md-8 col-md-offset-1 well"  class=img-responsive >
@@ -193,3 +251,35 @@ Vacunas: <br> </td>
       }
     });
   </script>
+
+<script src="crop/js/jquery.Jcrop.js"></script>
+<script src="crop/js/jquery.color.js"></script>
+ <link rel="stylesheet" href="crop/css/jquery.Jcrop.css" type="text/css" />
+<script type="text/javascript">
+
+  $(function(){
+
+    $('#target').Jcrop({
+      aspectRatio: 1,
+      onSelect: updateCoords
+    });
+
+  });
+
+  function updateCoords(c)
+  {
+    $('#x').val(c.x);
+    $('#y').val(c.y);
+    $('#w').val(c.w);
+    $('#h').val(c.h);
+  };
+
+  function checkCoords()
+  {
+    if (parseInt($('#w').val())) return true;
+    alert('Please select a crop region then press submit.');
+    return false;
+  };
+
+</script>
+

@@ -17,11 +17,11 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 
 	<title>Lista</title>
 <ul>
- <li><a href="Bienvenidos.html">Bienvenidos</a></li>
-  <li><a href="formulario.php">Ingresar Usuario</a></li>
-  <li><a href="usuarios_modificar.php">Modificar Usuario</a></li> 
-  <li><a href="listado.php">Ver Listado</a></li>
-  <li><a href="logout.php">Logout</a></li>
+ <li><a style="text-decoration: none; color:#767676" href="Bienvenidos.html">Bienvenidos</a></li>
+  <li><a style="text-decoration: none; color:#767676"  href="formulario.php">Ingresar Usuario</a></li>
+  <li><a style="text-decoration: none; color:#767676"  href="usuarios_modificar.php">Modificar Usuario</a></li> 
+  <li><a style="text-decoration: none; color:#767676"  href="listado.php">Ver Listado</a></li>
+  <li><a style="text-decoration: none; color:#767676" href="logout.php">Logout</a></li>
 
 </ul>
 <br>

@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/fonts.css">
 <link rel="icon" type="text/css" href="css/mascotas.ico">
+<script src="js/jquery.min.js"></script>
 <link rel="stylesheet"  href="css/menu.css">
 <style type="text/css">
 BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/uploads/2013/07/minimal-gray-to-white-gradient-wallpapers1.jpg) repeat center center fixed;} 
@@ -17,11 +18,11 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 	
 	<title>Lista</title>
 <ul>
- <li><a href="Bienvenidos.html">Bienvenidos</a></li>
-  <li><a href="formulario.php">Ingresar Usuario</a></li>
-  <li><a href="usuarios_modificar.php">Modificar Usuario</a></li> 
-  <li><a href="listado.php">Ver Listado</a></li>
-  <li><a href="logout.php">Logout</a></li>
+ <li><a style="text-decoration: none; color:#767676" href="Bienvenidos.html">Bienvenidos</a></li>
+  <li><a style="text-decoration: none; color:#767676"  href="formulario.php">Ingresar Usuario</a></li>
+  <li><a style="text-decoration: none; color:#767676"  href="usuarios_modificar.php">Modificar Usuario</a></li> 
+  <li><a style="text-decoration: none; color:#767676"  href="listado.php">Ver Listado</a></li>
+  <li><a style="text-decoration: none; color:#767676" href="logout.php">Logout</a></li>
 
 </ul>
 <br>
@@ -32,7 +33,9 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 			
 <title>Ingresar Usuarios</title>
 
-<script type="text/javascript" src="js/jquery.js"></script>
+
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/ImageSelect.jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 
 <html lang="en">
@@ -48,6 +51,7 @@ BODY { background: url(http://www.sanantoniotaxicabservice.com/wp-content/upload
 
 <div class="container">
 	<div class="row"> 
+		
 	
 		<div class="col-md-4 col-md-offset-3 well"  class=img-responsive >
 		<form name="formulario" method="post" action="formulario.php" enctype="multipart/form-data" id="formulario_mascota">
@@ -59,7 +63,7 @@ Nombre Dueño: <input type="text" name="nombre_dueno" id="nombre_dueno" value=""
 Rut: <input type="text" name="rut" id="rut" value="" class="form-control" placeholder="Ingresa Rut"><br> 
 dv: <input type="text" name="dv" id="dv" value="" class="form-control" placeholder="Ingresa Codigo Verificador"><br> 
 Telefono: <input type="text" name="telefono" id="telefono" value="" class="form-control" placeholder="Ingrese Telefono"><br>
-<input type="file" name="imagen" id="imagen"/>
+
 <br>
 
 
@@ -73,7 +77,8 @@ Telefono: <input type="text" name="telefono" id="telefono" value="" class="form-
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
+	<script type="text/javascript" src="js/jquery-pack.js"></script>
+	<script type="text/javascript" src="js/jquery.imgareaselect.min.js"></script>
 	<style type="text/css">
 		body { font-family: Helvetica, sans-serif; }
 		h2, h3 { margin-top:0; }
@@ -83,9 +88,9 @@ Telefono: <input type="text" name="telefono" id="telefono" value="" class="form-
 	</style>
 </head>
 <body>
-	<div id="results"></div>
 	
-
+	
+	<div id="results"></div>
 	<div id="my_camera"></div>
 	
 	<!-- First, include the Webcam.js JavaScript Library -->
@@ -113,7 +118,7 @@ Telefono: <input type="text" name="telefono" id="telefono" value="" class="form-
 				// display results in page
 				document.getElementById('results').innerHTML = 
 					'<h2>Tu foto</h2>' + 
-					'<img src="'+data_uri+'"/>';
+					'<img src="'+data_uri+'" id="imagencam" />';
 			} );
 		}
 	</script>
@@ -129,16 +134,16 @@ Telefono: <input type="text" name="telefono" id="telefono" value="" class="form-
 	var rut = $("#rut").val();
 	var dv = $("#dv").val();
 	var telefono = $("#telefono").val();
-	var imagen = $("#imagen").prop("files")[0];
+	var imagencam = document.getElementById("imagencam").getAttribute('src');
+	//var imagen = $("#imagen").prop("files")[0];
 	var formData = new FormData();
 	formData.append('nombre_dueno' , nombre_dueno);
 	formData.append('rut' , rut);
 	formData.append('dv' , dv);
 	formData.append('telefono' , telefono);
-	formData.append('imagen' , imagen);
-	 for (var pair of formData.entries()) {
-            console.log(pair[0]+ ', ' + pair[1]); 
-            }
+	//formData.append('imagen' , imagen);
+	formData.append('imagencam' , imagencam);
+	console.log(imagencam);
 	$.ajax({
 	type: "POST",
 	url: "proceso.php",
@@ -154,3 +159,5 @@ return false;
 });
 });
 </script>
+
+

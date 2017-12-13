@@ -4,10 +4,11 @@ include ('libreria/phpqrcode/qrlib.php');
 $data['msj'] = false;
 $mascota = new Mascota;
 if (isset($_POST['nombre_dueno']) and strlen($_POST['nombre_dueno']) > 2 and isset($_POST['rut']) and strlen($_POST['rut']) > 7 and isset($_POST['dv']) and strlen($_POST['dv']) > 0 and isset($_POST['telefono']) and strlen($_POST['telefono']) > 7) {
-	$file_name = $_FILES['imagen']['name'];
-    $file_tmp =$_FILES['imagen']['tmp_name'];
-    $file_type=$_FILES['imagen']['type'];
-    echo $file_name;
+	//$file_name = $_FILES['imagen']['name'];
+    //$file_tmp =$_FILES['imagen']['tmp_name'];
+    //$file_type=$_FILES['imagen']['type'];
+    
+
 	$data['datos'] = $mascota->insertUser($_POST['nombre_dueno'], $_POST['rut'], $_POST['dv'], $_POST['telefono'],$file_name);
 	$data['rut'] = $data['datos'][0]['rut'];
 	$data['msj'] = true;
@@ -15,8 +16,18 @@ if (isset($_POST['nombre_dueno']) and strlen($_POST['nombre_dueno']) > 2 and iss
 	if (!is_dir($dirname)) {
     	mkdir($dirname);
 	}
-	move_uploaded_file($file_tmp, $dirname."/".$_POST['rut'].".png");
-	$ImagenGuar = "localhost/login/archivo/".$_POST['rut']."/".$_POST['rut'].".png";
+	move_uploaded_file($file_tmp, $dirname."/".$_POST['rut'].".jpeg");
+	//$ImagenGuar = "localhost/login/archivo/".$_POST['rut']."/".$_POST['rut'].".png";
+
+	define('UPLOAD_DIR', 'archivo/'.$_POST['rut'].'/');
+	$img = $_POST['imagencam'];
+	echo $img;
+	$img = str_replace('data:image/jpeg;base64,', '', $img);
+	$img = str_replace(' ', '+', $img);
+	$data = base64_decode($img);
+	$file = UPLOAD_DIR . $_POST['rut'].'camera' . '.jpeg';
+	$success = file_put_contents($file, $data);
+	print $success ? $file : 'Unable to save the file.';
 
     $codeContents  = 'BEGIN:VCARD'."\n"; 
     $codeContents .= 'FN:'.$_POST['nombre_dueno']."\n";  

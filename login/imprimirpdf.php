@@ -48,7 +48,7 @@ $res = $mysqli->query($consulta);
     $pdf->Cell(30, 125, $text4);
     $pdf->Cell(35, 125, $text5);
     $pdf->Cell(40, 125, $text6);
-    $pdf -> Image("archivo/".$rut."/".$rut.".jpg",50,100,40);
+    $pdf -> Image("archivo/".$rut."/".$rut.'camera'.".jpeg",50,100,40);
     $pdf -> Image("archivo/".$rut."/".$rut.'QR'.".jpg",100,90,40);
    
     $text = '';
